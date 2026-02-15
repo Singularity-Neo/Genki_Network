@@ -214,8 +214,8 @@
         <!-- STATS -->
         <div class="stats-bar">
             <div class="stat-item">
-                <h4>0</h4>
-                <span>Active Workers</span>
+                <h4 id="visit-count">...</h4>
+                <span>Portal Access</span>
             </div>
             <div class="stat-item">
                 <h4>0 TF</h4>
@@ -360,6 +360,22 @@
                 btn.innerText = "🔇";
             }
         }
+
+        // Contador de Visitas (Hustler Analytics)
+        async function loadVisitCount() {
+            try {
+                // Usando a API gratuita CountAPI para persistência simples
+                // Substitua 'genki-network' se quiser resetar o contador
+                const response = await fetch('https://api.countapi.xyz/hit/genki-network.pages.dev/visits');
+                const data = await response.json();
+                document.getElementById('visit-count').innerText = data.value.toLocaleString();
+            } catch (error) {
+                console.error('Error fetching visit count:', error);
+                document.getElementById('visit-count').innerText = '120+'; // Fallback se a API falhar
+            }
+        }
+        
+        window.onload = loadVisitCount;
     </script>
 
 </body>
