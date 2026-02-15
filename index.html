@@ -397,6 +397,7 @@
 
     </div>
 
+    <!-- Footer e Scripts -->
     <footer>
         <div class="container">
             <div class="footer-links" style="margin-bottom: 30px;">
@@ -408,6 +409,9 @@
             <p>&copy; 2026 Genki Network. A Singularity-Neo Initiative. <br> Powered by Collective Vital Energy.</p>
         </div>
     </footer>
+
+    <!-- SOLANA WEB3 LIBRARY -->
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 
     <script>
         function toggleMute(videoId, btn) {
@@ -434,20 +438,52 @@
             }
         }
 
-        function connectWallet() {
+        async function connectWallet() {
             const btn = document.getElementById('connect-btn');
             const status = document.getElementById('wallet-status');
-            const balance = document.getElementById('dash-balance');
+            const balanceText = document.getElementById('dash-balance');
             const node = document.getElementById('node-status');
-            
-            btn.innerText = "Connecting...";
-            setTimeout(() => {
-                btn.innerText = "0xHustler...v01";
-                status.innerHTML = '<span class="badge" style="background: rgba(0, 255, 65, 0.1); color: var(--vital-green);">Status: Online</span>';
-                balance.innerText = "1,450.22";
-                node.innerText = "ACTIVE";
-                node.style.color = "var(--vital-green)";
-            }, 1200);
+
+            // Detectar Provedor (Phantom, Solflare, etc)
+            const getProvider = () => {
+                if ('solana' in window) {
+                    const provider = window.solana;
+                    if (provider.isPhantom || provider.isSolflare || true) {
+                        return provider;
+                    }
+                }
+                window.open('https://solflare.com/', '_blank');
+                return null;
+            };
+
+            const provider = getProvider();
+
+            if (provider) {
+                try {
+                    btn.innerText = "Requesting...";
+                    const resp = await provider.connect();
+                    const publicKey = resp.publicKey.toString();
+                    
+                    // Sucesso na conexão
+                    btn.innerText = publicKey.slice(0, 4) + "..." + publicKey.slice(-4);
+                    status.innerHTML = '<span class="badge" style="background: rgba(0, 255, 65, 0.1); color: var(--vital-green);">Status: Online</span>';
+                    
+                    // Buscar Saldo Real (SOL) via RPC público
+                    const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
+                    const balance = await connection.getBalance(resp.publicKey);
+                    const solBalance = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4);
+
+                    // $GENKI ainda não lançado oficialmente -> Mostramos 0.00 (Transparência Total)
+                    balanceText.innerHTML = `<span style="font-size: 0.5em; color: #555;">${solBalance} SOL</span><br>0.00`;
+                    node.innerText = "STANDBY";
+                    node.style.color = "#888";
+
+                    console.log("Wallet Connected:", publicKey);
+                } catch (err) {
+                    console.error("User rejected connection", err);
+                    btn.innerText = "Connection Failed";
+                }
+            }
         }
         
         window.onload = loadVisitCount;
