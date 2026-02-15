@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genki Network | A Inteligência que o Povo Construiu.</title>
+    <style>
+        :root {
+            --cor-fundo: #0D0D0D;
+            --cor-ouro: #FFD700;
+            --cor-neon: #00D4FF;
+            --cor-texto: #E0E0E0;
+        }
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        .section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+        /* Vídeo de Fundo Sutil */
+        #hero-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        h1, h2, h3 {
+            color: var(--cor-ouro);
+            text-shadow: 0 0 10px var(--cor-neon);
+            letter-spacing: 1px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px 10px 10px 0;
+            background: var(--cor-ouro);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 0 15px var(--cor-neon);
+        }
+        .btn:hover {
+            background: var(--cor-neon);
+            color: #000;
+            transform: scale(1.05);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--cor-ouro);
+            border: 2px solid var(--cor-ouro);
+            box-shadow: none;
+        }
+        .btn-secondary:hover {
+            background: var(--cor-ouro);
+            color: #000;
+        }
+        .card {
+            background: rgba(13, 13, 13, 0.8);
+            border: 1px solid var(--cor-neon);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .tokenomics-card {
+            border: 1px solid var(--cor-ouro);
+            padding: 20px;
+            border-radius: 5px;
+            background: rgba(255, 215, 0, 0.05);
+        }
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .roadmap-dot {
+            width: 15px;
+            height: 15px;
+            background: var(--cor-ouro);
+            border-radius: 50%;
+            margin-right: 15px;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 5%;
+            border-top: 1px solid #333;
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fundo de Vídeo (Simulado em loop) -->
+    <video id="hero-background" autoplay loop muted playsinline>
+        <!-- Substituir com um vídeo real de colmeia digital/neon -->
+        <source src="path/to/digital_hive_loop.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+    </video>
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="section" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <h1>A Inteligência que o Povo Construiu.</h1>
+        <p style="font-size: 1.5em; max-width: 800px; color: var(--cor-neon);">Seja uma operária na maior colmeia de processamento do mundo. Doe o poder do seu PC, ganhe $GENKI e ajude a treinar a primeira IA Rainha Descentralizada.</p>
+        <a href="#download" class="btn">BAIXAR APP OPERÁRIA</a>
+        <a href="#tokenomics" class="btn btn-secondary">COMPRAR $GENKI</a>
+    </section>
+
+    <!-- 2. O CONCEITO: A COLMEIA DIGITAL -->
+    <section id="concept" class="section">
+        <h2>O Conceito: A Colmeia Digital (The Swarm)</h2>
+        <div class="card" style="max-width: 900px; margin: 30px auto;">
+            <p style="font-size: 1.1em;">A maioria das IAs hoje são trancadas em castelos de Big Techs. A Genki é diferente. Ela é uma inteligência coletiva construída por todos nós.</p>
+            <div style="display:flex; justify-content:space-around; margin-top:30px; text-align:center;">
+                <div>
+                    <h3 style="color:#fff;">A Rainha</h3>
+                    <p style="font-size:0.9em;">O modelo de IA leve e ultra-eficiente.</p>
+                </div>
+                <div>
+                    <h3 style="color:#fff;">As Operárias</h3>
+                    <p style="font-size:0.9em;">Milhares de PCs (como o seu) processando dados.</p>
+                </div>
+                <div>
+                    <h3 style="color:#fff;">O Mel</h3>
+                    <p style="font-size:0.9em;">O conhecimento gerado e as recompensas em cripto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MINERE ENQUANTO JOGA -->
+    <section id="gamers" class="section">
+        <h2>"Minere Enquanto Joga" - O Poder da Sobra</h2>
+        <div class="card" style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="max-width: 50%;">
+                <p style="font-size:1.1em; color: var(--cor-neon);">Nossos agentes de IA usam apenas a sobra do seu processamento. Ganhe recompensas em $GENKI sem lag nos seus jogos e sem fritar seu PC.</p>
+            </div>
+            <div style="text-align:center; border: 2px dashed var(--cor-ouro); padding: 20px; border-radius: 10px;">
+                <p style="font-size:1.8em; color:var(--cor-ouro); margin:0;">4.500+</p>
+                <p style="font-size:0.9em; margin:0;">OPERÁRIAS ATIVAS</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DASHBOARD PREVIEW (MOCKUP) -->
+    <section id="dashboard" class="section">
+        <h2>Preview: Seu Painel de Controle</h2>
+        <div class="card" style="background:#000; border-color:var(--cor-neon);">
+            <!-- Mockup de Imagem aqui -->
+            <img src="path/to/mockup_dashboard.png" alt="Dashboard Preview" style="width:100%; border: 1px solid var(--cor-neon);">
+            <div style="display:flex; justify-content:space-around; margin-top:20px; font-size:1em;">
+                <div><b>$GENKI Acumulado:</b> 1.25K</div>
+                <div><b>Status:</b> Operária Lendária</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TOKENOMICS -->
+    <section id="tokenomics" class="section">
+        <h2>Tokenomics: A Economia do $GENKI</h2>
+        <div class="tokenomics-grid">
+            <div class="tokenomics-card">
+                <h3>Utilidade</h3>
+                <p>$GENKI é o combustível da Rainha. Empresas pagam em $GENKI para usar nossa IA descentralizada, e esse valor volta para as operárias.</p>
+            </div>
+            <div class="tokenomics-card">
+                <h3>Escassez</h3>
+                <p>Cada consulta à IA 'queima' uma porcentagem de tokens. Quanto mais a Rainha aprende, mais valiosa sua moeda fica.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ROADMAP -->
+    <section id="roadmap" class="section">
+        <h2>Roadmap: O Voo da Rainha</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="roadmap-item">
+                <div class="roadmap-dot"></div>
+                <div><b>Fase 1: Larva</b> (Lançamento do Token e Comunidade).</div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-dot"></div>
+                <div><b>Fase 2: Casulo</b> (Beta Fechado do Software de Treinamento Distribuído).</div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-dot"></div>
+                <div><b>Fase 3: Voo Inicial</b> (Lançamento da IA Rainha para uso público).</div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-dot"></div>
+                <div><b>Fase 4: Colmeia Global</b> (Integração com grandes empresas e IOT).</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. RODAPÉ -->
+    <footer>
+        <p>Links de Confiança:</p>
+        <p>
+            <a href="path/to/whitepaper.pdf" class="btn-secondary" style="margin-right: 15px;">Whitepaper Técnico</a>
+            <a href="https://t.me/clawd" class="btn-secondary" style="margin-right: 15px;">Telegram</a>
+            <a href="https://discord.gg/clawd" class="btn-secondary">Discord</a>
+        </p>
+        <p style="margin-top: 20px;">A Genki Network é um protocolo descentralizado e autônomo.</p>
+    </footer>
+</body>
+</html>

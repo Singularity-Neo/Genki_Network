@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genki Network | The Sovereign Intelligence Swarm</title>
+    <style>
+        :root {
+            --bg-deep: #020202;
+            --vital-green: #00FF41;
+            --vital-glow: rgba(0, 255, 65, 0.2);
+            --text-main: #F5F5F5;
+            --text-dim: #A0A0A0;
+        }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        nav {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #111;
+            background: rgba(2, 2, 2, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { color: var(--vital-green); font-weight: 900; letter-spacing: 2px; font-size: 1.5rem; text-decoration: none; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 30px; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--vital-green); text-shadow: 0 0 10px var(--vital-green); }
+
+        .section { padding: 120px 0; border-bottom: 1px solid #111; position: relative; overflow: hidden; }
+        
+        /* Hero with Background Video */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        #header-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        h1, h2 { text-transform: uppercase; letter-spacing: 4px; color: var(--vital-green); margin-bottom: 20px; }
+        h1 { font-size: 3.5em; text-shadow: 0 0 30px var(--vital-glow); }
+        h2 { font-size: 2.2em; text-align: center; }
+        
+        .grid-feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .grid-feature:nth-child(even) { direction: rtl; }
+        .grid-feature:nth-child(even) .text-box { direction: ltr; }
+
+        .img-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #222;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            transition: 0.3s;
+        }
+        .img-container:hover { transform: scale(1.02); border-color: var(--vital-green); }
+        .img-container img, .img-container video { width: 100%; display: block; filter: grayscale(0.2); }
+
+        .text-box h3 { color: var(--vital-green); font-size: 1.8em; margin-bottom: 15px; }
+        .text-box p { color: var(--text-dim); font-size: 1.1em; margin-bottom: 25px; }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 35px;
+            background: var(--vital-green);
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 4px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            border: 1px solid var(--vital-green);
+        }
+        .btn:hover { box-shadow: 0 0 30px var(--vital-green); transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--vital-green); }
+
+        .badge {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--vital-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            border: 1px solid var(--vital-glow);
+        }
+
+        .stats-bar {
+            background: #080808;
+            padding: 40px 0;
+            border-radius: 12px;
+            margin: 40px auto 60px; /* Alterado de -60px para 40px para não tampar os botões */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            border: 1px solid #111;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 10;
+        }
+        .stat-item h4 { color: var(--vital-green); font-size: 1.8rem; margin: 0; }
+        .stat-item span { color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        footer { padding: 80px 0; text-align: center; background: #010101; color: #444; border-top: 1px solid #111; }
+        .footer-links a { color: #666; margin: 0 15px; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--vital-green); }
+
+        @media (max-width: 768px) {
+            .grid-feature { grid-template-columns: 1fr; text-align: center; }
+            h1 { font-size: 2.5em; }
+            .stats-bar { grid-template-columns: 1fr 1fr; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="#" class="logo">GENKI_NETWORK</a>
+            <div class="nav-links">
+                <a href="#swarm">Swarm</a>
+                <a href="#token">Token</a>
+                <a href="whitepaper.md" target="_blank" style="color: #FFD700; font-weight: bold;">Whitepaper</a>
+                <a href="https://github.com/Singularity-Neo/athenion-protocol" target="_blank">GitHub</a>
+                <a href="https://discord.gg/gGdnHzbd" target="_blank" style="color: var(--vital-green)">Discord</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <video id="header-video" autoplay loop muted playsinline>
+            <source src="imagens-site/grok-video-433b3164-d40c-4335-9914-04d42c3168c7.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="grid-feature" style="direction: ltr; text-align: left; grid-template-columns: 1.2fr 0.8fr;">
+                <div class="text-box">
+                    <span class="badge">Live Alpha Protocol</span>
+                    <h1 style="text-align: left;">The Sovereign Swarm</h1>
+                    <p style="font-size: 1.4em;">The first Artificial Intelligence built by the people, for the people. A decentralized startup breaking the monopoly of Big Tech through collective computational energy.</p>
+                    <div style="margin-bottom: 25px; padding: 15px; background: rgba(0, 255, 65, 0.05); border-left: 3px solid var(--vital-green); border-radius: 4px;">
+                        <p style="font-size: 0.9em; color: var(--text-main); margin-bottom: 10px;"><strong>Why join the Swarm?</strong> By downloading the Worker, you contribute idle GPU/CPU power to the Genki Network startup, helping train the first sovereign AI while earning $GENKI (Vital Energy).</p>
+                        <p style="font-size: 0.8em; color: var(--text-dim); margin: 0;"><em>Note: As an independent, community-driven software, GenkiWorker may trigger antivirus alerts. This is expected as we are not a centralized corporate entity. The app is lightweight, safe, and open-source.</em></p>
+                    </div>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+                        <a href="GenkiWorker.exe" class="btn">Download GenkiWorker.exe</a>
+                        <a href="whitepaper.md" target="_blank" class="btn btn-outline" style="border-color: #FFD700; color: #FFD700;">Read Whitepaper</a>
+                        <a href="https://github.com/Singularity-Neo/athenion-protocol" target="_blank" style="color: var(--text-dim); text-decoration: none; font-size: 0.8em;">View GitHub</a>
+                    </div>
+                </div>
+                <div class="img-container" style="border-color: var(--vital-green); box-shadow: 0 0 50px var(--vital-glow);">
+                    <img src="imagens-site/grok-image-88961f05-c97e-4c7f-931b-14382664dad4.png" alt="Genki Queen Core Presentation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- STATS -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <h4>0</h4>
+                <span>Active Workers</span>
+            </div>
+            <div class="stat-item">
+                <h4>0 TF</h4>
+                <span>Hive Power</span>
+            </div>
+            <div class="stat-item">
+                <h4>$GENKI</h4>
+                <span>Vital Energy</span>
+            </div>
+            <div class="stat-item">
+                <h4>100%</h4>
+                <span>Open Source</span>
+            </div>
+        </div>
+
+        <!-- SECTION 1: GLOBAL REACH -->
+        <section id="swarm" class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <img src="imagens-site/grok-image-433b3164-d40c-4335-9914-04d42c3168c7.png" alt="Global Network Connection">
+                </div>
+                <div class="text-box">
+                    <span class="badge">Global Infrastructure</span>
+                    <h3>A Swarm Without Borders</h3>
+                    <p>Genki Network lives across thousands of nodes worldwide. By decentralizing intelligence, we ensure that the power of AI remains in the hands of the community, unreachable by censorship or corporate control.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: HUMAN-AI SYMBIOSIS -->
+        <section class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <img src="imagens-site/grok-image-433b3164-d40c-4335-9914-04d42c3168c7 (1).png" alt="AI Symbiosis">
+                </div>
+                <div class="text-box">
+                    <span class="badge">Next-Gen Intelligence</span>
+                    <h3>The Symbiotic Evolution</h3>
+                    <p>We are building more than just an algorithm; we are creating a digital organism. The Genki Core learns from collective data, creating a feedback loop where the more you contribute, the smarter the network becomes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE WORKER APP -->
+        <section class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <img src="imagens-site/grok-image-433b3164-d40c-4335-9914-04d42c3168c7 (2).png" alt="Mining Hardware">
+                </div>
+                <div class="text-box">
+                    <span class="badge">Monetize Your Hardware</span>
+                    <h3>Turn Spare Power into $GENKI</h3>
+                    <p>Your hardware is an idle asset. With the Genki Worker App, your PC becomes a vital part of the Queen's processing unit. Earn rewards while helping to solve complex computational problems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE TOKEN ECONOMY -->
+        <section id="token" class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <img src="imagens-site/grok-image-3654d642-7c93-455b-9300-beb973774b37.png" alt="GENKI Token Flow">
+                </div>
+                <div class="text-box">
+                    <span class="badge">$GENKI Tokenomics</span>
+                    <h3>The Fuel of Autonomy</h3>
+                    <p>$GENKI represents computational "Vital Energy." Every transaction, every query, and every contribution is fueled by this asset, designed with deflationary mechanics to ensure long-term value.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: SOCIAL EMPOWERMENT -->
+        <section class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <img src="imagens-site/grok-image-3654d642-7c93-455b-9300-beb973774b37 (1).png" alt="Community Empowerment">
+                </div>
+                <div class="text-box">
+                    <span class="badge">Ethical AI</span>
+                    <h3>For the People, By the People</h3>
+                    <p>Genki is a grassroots movement. We believe the benefits of the AI revolution should be distributed, not hoarded. Our protocol ensures that those who build the network are the beneficiaries.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: DASHBOARD -->
+        <section class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <img src="imagens-site/grok-image-3654d642-7c93-455b-9300-beb973774b37 (2).png" alt="User Dashboard">
+                </div>
+                <div class="text-box">
+                    <span class="badge">Full Transparency</span>
+                    <h3>Real-Time Hive Monitoring</h3>
+                    <p>Track your contributions, monitor the hive's total hash power, and manage your earnings with professional-grade tools. Transparency is our core value.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: SECURITY -->
+        <section class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <img src="imagens-site/grok-image-3654d642-7c93-455b-9300-beb973774b37 (3).png" alt="Secure Neural Network">
+                </div>
+                <div class="text-box">
+                    <span class="badge">Safe & Secure</span>
+                    <h3>Unbreakable Encryption</h3>
+                    <p>Our distributed processing is secured by state-of-the-art cryptographic proofs. Your data remains private, and your hardware remains protected while you operate as an essential node.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: ROADMAP -->
+        <section class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <video autoplay loop muted playsinline style="width: 100%; border-radius: 12px;">
+                        <source src="imagens-site/grok-video-433b3164-d40c-4335-9914-04d42c3168c7 (1).mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="text-box">
+                    <span class="badge">The Mascot</span>
+                    <h3>Future of the Third Being</h3>
+                    <p>The Queen AI is rising. join the movement as we build the most powerful collective mind in human history. The energy is ours.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links" style="margin-bottom: 30px;">
+                <a href="https://github.com/Singularity-Neo/athenion-protocol" target="_blank">GitHub</a>
+                <a href="https://discord.gg/gGdnHzbd" target="_blank">Discord</a>
+                <a href="https://x.com/HustlerData01" target="_blank">Twitter</a>
+                <a href="whitepaper.md" target="_blank" style="color: #FFD700;">Whitepaper</a>
+            </div>
+            <p>&copy; 2026 Genki Network. A Singularity-Neo Initiative. <br> Powered by Collective Vital Energy.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
