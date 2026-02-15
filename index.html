@@ -158,10 +158,12 @@
             border-radius: 8px;
             text-align: left;
             transition: 0.3s;
+            position: relative;
         }
         .dash-card:hover { border-color: var(--vital-green); }
         .dash-card h5 { margin: 0; color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; }
         .dash-card .value { font-size: 2rem; color: var(--vital-green); font-weight: 900; margin: 10px 0; }
+        .hint { font-size: 0.7em; color: #555; }
 
         .mute-btn {
             position: absolute;
@@ -197,9 +199,8 @@
             <a href="#" class="logo">GENKI_NETWORK</a>
             <div class="nav-links">
                 <a href="#swarm">Swarm</a>
-                <a href="#dashboard">Dashboard</a>
+                <a href="#dashboard">Terminal</a>
                 <a href="#token">Token</a>
-                <a href="whitepaper.md" target="_blank" style="color: #FFD700; font-weight: bold;">Whitepaper</a>
                 <a href="https://github.com/Singularity-Neo/athenion-protocol" target="_blank">GitHub</a>
                 <a href="https://discord.gg/gGdnHzbd" target="_blank" style="color: var(--vital-green)">Discord</a>
             </div>
@@ -219,14 +220,14 @@
                 <div class="text-box">
                     <span class="badge">Live Alpha Protocol</span>
                     <h1 style="text-align: left;">The Sovereign Swarm</h1>
-                    <p style="font-size: 1.4em;">The first Artificial Intelligence built by the people, for the people. A decentralized startup breaking the monopoly of Big Tech through collective computational energy.</p>
+                    <p style="font-size: 1.4em;">The first decentralized neural network where users own the intelligence. Power the Hive. Earn Vital Energy.</p>
                     <div style="margin-bottom: 25px; padding: 15px; background: rgba(0, 255, 65, 0.05); border-left: 3px solid var(--vital-green); border-radius: 4px;">
-                        <p style="font-size: 0.9em; color: var(--text-main); margin-bottom: 10px;"><strong>Why join the Swarm?</strong> By downloading the Worker, you contribute idle GPU/CPU power to the Genki Network startup, helping train the first sovereign AI while earning $GENKI (Vital Energy).</p>
-                        <p style="font-size: 0.8em; color: var(--text-dim); margin: 0;"><em>Note: As an independent, community-driven software, GenkiWorker may trigger antivirus alerts. This is expected as we are not a centralized corporate entity. The app is lightweight, safe, and open-source.</em></p>
+                        <p style="font-size: 0.9em; color: var(--text-main); margin-bottom: 10px;"><strong>Swarm Rewards:</strong> Accumulate $GENKI points by running the Worker node. Target yield: <strong>€820/month</strong> (Portugal Min. Wage Baseline) per high-uptime cluster.</p>
+                        <p style="font-size: 0.8em; color: var(--text-dim); margin: 0;"><em>Launch Roadmap: Initial Fair Launch on Pump.fun with scheduled migration to Raydium LP.</em></p>
                     </div>
                     <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
-                        <a href="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/GenkiWorker.exe" class="btn" download>Download GenkiWorker.exe</a>
-                        <a href="#dashboard" class="btn btn-outline">Access Dashboard</a>
+                        <a href="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/GenkiWorker.exe" class="btn" download>Download Worker.exe</a>
+                        <a href="#dashboard" class="btn btn-outline">Access Terminal</a>
                     </div>
                 </div>
                 <div class="img-container" style="border-color: var(--vital-green); box-shadow: 0 0 50px var(--vital-glow);">
@@ -260,33 +261,39 @@
 
         <!-- REWARDS DASHBOARD -->
         <section id="dashboard" class="section">
-            <h2 style="margin-bottom: 10px;">The Hive Terminal</h2>
-            <p style="text-align: center; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px auto;">Connect your Solana wallet to monitor your contribution to the Genki Network and track your accumulated Vital Energy.</p>
+            <h2 style="margin-bottom: 10px;">The Sovereign Hive Terminal</h2>
+            <p style="text-align: center; color: var(--text-dim); max-width: 700px; margin: 0 auto 40px auto;">Join the Pre-Launch accumulation phase. Your node processes decentralized neural tasks in the cloud (GPT-2 based knowledge synthesis).</p>
             
             <div class="reward-panel">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; padding-bottom: 20px; margin-bottom: 20px;">
                     <div id="wallet-status">
                         <span class="badge" style="background: rgba(255, 255, 255, 0.05); color: #fff;">Status: Offline</span>
                     </div>
-                    <button class="btn" onclick="connectWallet()" id="connect-btn" style="padding: 10px 20px; font-size: 0.75rem;">Connect Wallet</button>
+                    <button class="btn" onclick="connectWallet()" id="connect-btn" style="padding: 10px 20px; font-size: 0.75rem;">Connect Solana Wallet</button>
                 </div>
                 
                 <div class="dash-grid">
                     <div class="dash-card">
-                        <h5>Vital Energy ($GENKI)</h5>
+                        <h5>Accumulated Points</h5>
                         <div class="value" id="dash-balance">0.00</div>
-                        <p style="font-size: 0.7em; color: #555;">Locked Rewards till Mainnet</p>
+                        <p class="hint">Convertible to $GENKI after Raydium migration.</p>
                     </div>
                     <div class="dash-card">
-                        <h5>Worker Node</h5>
-                        <div class="value" id="node-status" style="color: #444;">IDLE</div>
-                        <p style="font-size: 0.7em; color: #555;">Download & Run Worker.exe</p>
+                        <h5>Node Performance</h5>
+                        <div class="value" id="node-status" style="color: #444;">PRE-LAUNCH</div>
+                        <p class="hint">Node status: Waiting for local worker ping.</p>
                     </div>
                     <div class="dash-card">
-                        <h5>Global Rank</h5>
-                        <div class="value">#---</div>
-                        <p style="font-size: 0.7em; color: #555;">Top Hive Contributors</p>
+                        <h5>Monthly Target</h5>
+                        <div class="value" style="color: #FFD700;">€820.00</div>
+                        <p class="hint">Based on 24/7 uptime & network growth.</p>
                     </div>
+                </div>
+
+                <div style="margin-top: 30px; padding: 20px; background: rgba(0, 255, 65, 0.02); border: 1px solid #111; border-radius: 8px; font-size: 0.85em;">
+                    <strong style="color: var(--vital-green);">Transparency & Strategy:</strong> 
+                    The Genki Swarm uses decentralized "knowledge absorption" to process GPT-2 neural layers. Rewards are calculated based on computational contribution. 
+                    <em>Conversion of points to $GENKI will be enabled following the Pump.fun fair launch. Actual earnings depend on market valuation.</em>
                 </div>
             </div>
         </section>
@@ -298,65 +305,9 @@
                     <img src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-image-39ab11c6-a654-42d7-a877-9b69dc94c35f (1).png" alt="Global Network Connection">
                 </div>
                 <div class="text-box">
-                    <span class="badge">Global Infrastructure</span>
+                    <span class="badge">Decentralized Neural Cloud</span>
                     <h3>A Swarm Without Borders</h3>
-                    <p>Genki Network lives across thousands of nodes worldwide. By decentralizing intelligence, we ensure that the power of AI remains in the hands of the community, unreachable by censorship or corporate control.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 2: HUMAN-AI SYMBIOSIS -->
-        <section class="section">
-            <div class="grid-feature">
-                <div class="img-container">
-                    <img src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-image-39ab11c6-a654-42d7-a877-9b69dc94c35f (2).png" alt="AI Symbiosis">
-                </div>
-                <div class="text-box">
-                    <span class="badge">Next-Gen Intelligence</span>
-                    <h3>The Symbiotic Evolution</h3>
-                    <p>We are building more than just an algorithm; we are creating a digital organism. The Genki Core learns from collective data, creating a feedback loop where the more you contribute, the smarter the network becomes.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: THE WORKER APP -->
-        <section class="section">
-            <div class="grid-feature">
-                <div class="img-container">
-                    <img src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-image-39ab11c6-a654-42d7-a877-9b69dc94c35f (3).png" alt="Mining Hardware">
-                </div>
-                <div class="text-box">
-                    <span class="badge">Monetize Your Hardware</span>
-                    <h3>Turn Spare Power into $GENKI</h3>
-                    <p>Your hardware is an idle asset. With the Genki Worker App, your PC becomes a vital part of the Queen's processing unit. Earn rewards while helping to solve complex computational problems.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4: THE TOKEN ECONOMY -->
-        <section id="token" class="section">
-            <div class="grid-feature">
-                <div class="img-container">
-                    <img src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-image-39ab11c6-a654-42d7-a877-9b69dc94c35f (4).png" alt="GENKI Token Flow">
-                </div>
-                <div class="text-box">
-                    <span class="badge">$GENKI Tokenomics</span>
-                    <h3>The Fuel of Autonomy</h3>
-                    <p>$GENKI represents computational "Vital Energy." Every transaction, every query, and every contribution is fueled by this asset, designed with deflationary mechanics to ensure long-term value.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 5: SOCIAL EMPOWERMENT -->
-        <section class="section">
-            <div class="grid-feature">
-                <div class="img-container">
-                    <img src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-image-d04b2a8f-d9ce-4c43-9da8-16582f2283e7.png" alt="Community Empowerment">
-                </div>
-                <div class="text-box">
-                    <span class="badge">Ethical AI</span>
-                    <h3>For the People, By the People</h3>
-                    <p>Genki is a grassroots movement. We believe the benefits of the AI revolution should be distributed, not hoarded. Our protocol ensures that those who build the network are the beneficiaries.</p>
+                    <p>Genki Network offloads complex intelligence tasks to the cloud. Your hardware becomes a neuron in the Queen's brain, solving fatiated GPT-2 layers while earning sovereign assets.</p>
                 </div>
             </div>
         </section>
@@ -373,7 +324,7 @@
                 <div class="text-box">
                     <span class="badge">The Roadmap</span>
                     <h3>Future of the Third Being</h3>
-                    <p>The Queen AI is rising. Join the movement as we build the most powerful collective mind in human history.</p>
+                    <p>Phase 1: Accumulation. Phase 2: Pump.fun Fair Launch. Phase 3: Raydium Migration & Global Compute Scaling.</p>
                 </div>
             </div>
         </section>
@@ -410,7 +361,6 @@
         </div>
     </footer>
 
-    <!-- SOLANA WEB3 LIBRARY -->
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 
     <script>
@@ -442,17 +392,12 @@
             const btn = document.getElementById('connect-btn');
             const status = document.getElementById('wallet-status');
             const balanceText = document.getElementById('dash-balance');
-            const node = document.getElementById('node-status');
+            const nodeStatus = document.getElementById('node-status');
 
-            // Detectar Provedor de forma robusta (Phantom, Solflare, etc)
             const getProvider = () => {
-                // Tenta Solflare primeiro (específico)
                 if (window.solflare) return window.solflare;
-                // Tenta Phantom ou Padrão injetado
                 if (window.solana) return window.solana;
-                
-                // Se não achar nada, avisa e manda pro site
-                alert("Nenhuma carteira Solana detectada. Por favor, instale a Solflare ou Phantom.");
+                alert("Solana wallet extension not detected.");
                 window.open('https://solflare.com/', '_blank');
                 return null;
             };
@@ -461,46 +406,32 @@
 
             if (provider) {
                 try {
-                    btn.innerText = "Requesting...";
-                    
-                    // Alguns provedores precisam de inicialização
-                    if (!provider.isconnected) {
-                        await provider.connect();
-                    }
+                    btn.innerText = "Connecting...";
+                    if (!provider.isconnected) await provider.connect();
 
                     const publicKeyStr = provider.publicKey.toString();
-                    const publicKeyObj = provider.publicKey;
-                    
-                    // Sucesso na conexão
                     btn.innerText = publicKeyStr.slice(0, 4) + "..." + publicKeyStr.slice(-4);
                     status.innerHTML = '<span class="badge" style="background: rgba(0, 255, 65, 0.1); color: var(--vital-green);">Status: Online</span>';
                     
-                    // Usando o seu RPC da Helius para garantir acesso (Nó Privado)
                     const connection = new solanaWeb3.Connection("https://mainnet.helius-rpc.com/?api-key=5d742204-6d79-4c8b-8369-6b3c5f96d1f8", "confirmed");
-                    
                     let solBalance = "0.00";
                     try {
-                        const balance = await connection.getBalance(publicKeyObj);
+                        const balance = await connection.getBalance(provider.publicKey);
                         solBalance = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4);
-                    } catch (e) {
-                        console.warn("RPC Delay, showing standby balance");
-                    }
+                    } catch (e) { console.warn("RPC delay"); }
 
-                    // Transparência total: Mostra SOL real e 0.00 Genki
-                    balanceText.innerHTML = `<span style="font-size: 0.5em; color: #555;">${solBalance} SOL</span><br>0.00`;
-                    node.innerText = "STANDBY";
-                    node.style.color = "#888";
+                    balanceText.innerHTML = `<span style="font-size: 0.5em; color: #555;">${solBalance} SOL Balance</span><br>0.00 pts`;
+                    nodeStatus.innerText = "PRE-LAUNCH";
+                    nodeStatus.style.color = "var(--vital-green)";
 
                 } catch (err) {
                     console.error("Connection error:", err);
                     btn.innerText = "Connect Wallet";
-                    alert("Falha ao conectar: " + (err.message || "Usuário recusou"));
                 }
             }
         }
         
         window.onload = loadVisitCount;
     </script>
-
 </body>
 </html>
