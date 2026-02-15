@@ -48,14 +48,18 @@
             justify-content: center;
             position: relative;
         }
-        #header-video {
+        .video-wrapper {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
             z-index: -1;
+        }
+        #header-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             opacity: 0.3;
         }
         
@@ -80,6 +84,7 @@
             border: 1px solid #222;
             box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             transition: 0.3s;
+            position: relative;
         }
         .img-container:hover { transform: scale(1.02); border-color: var(--vital-green); }
         .img-container img, .img-container video { width: 100%; display: block; filter: grayscale(0.2); }
@@ -119,7 +124,7 @@
             background: #080808;
             padding: 40px 0;
             border-radius: 12px;
-            margin: 40px auto 60px; /* Alterado de -60px para 40px para não tampar os botões */
+            margin: 40px auto 60px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             text-align: center;
@@ -130,6 +135,22 @@
         }
         .stat-item h4 { color: var(--vital-green); font-size: 1.8rem; margin: 0; }
         .stat-item span { color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .mute-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--vital-green);
+            border: 1px solid var(--vital-green);
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 100;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .mute-btn:hover { background: var(--vital-green); color: #000; }
 
         footer { padding: 80px 0; text-align: center; background: #010101; color: #444; border-top: 1px solid #111; }
         .footer-links a { color: #666; margin: 0 15px; text-decoration: none; font-size: 0.9rem; }
@@ -159,9 +180,12 @@
 
     <!-- HERO -->
     <section class="hero">
-        <video id="header-video" autoplay loop muted playsinline>
-            <source src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-video-433b3164-d40c-4335-9914-04d42c3168c7.mp4" type="video/mp4">
-        </video>
+        <div class="video-wrapper">
+            <video id="header-video" autoplay loop muted playsinline>
+                <source src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-video-433b3164-d40c-4335-9914-04d42c3168c7.mp4" type="video/mp4">
+            </video>
+            <button class="mute-btn" onclick="toggleMute('header-video', this)">🔇</button>
+        </div>
         <div class="container">
             <div class="grid-feature" style="direction: ltr; text-align: left; grid-template-columns: 1.2fr 0.8fr;">
                 <div class="text-box">
@@ -277,46 +301,36 @@
             </div>
         </section>
 
-        <!-- SECTION 6: DASHBOARD -->
+        <!-- SECTION 8: ROADMAP (VIDEO) -->
         <section class="section">
             <div class="grid-feature">
                 <div class="img-container">
-                    <img src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-image-433b3164-d40c-4335-9914-04d42c3168c7.png" alt="User Dashboard">
-                </div>
-                <div class="text-box">
-                    <span class="badge">Full Transparency</span>
-                    <h3>Real-Time Hive Monitoring</h3>
-                    <p>Track your contributions, monitor the hive's total hash power, and manage your earnings with professional-grade tools. Transparency is our core value.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 7: SECURITY -->
-        <section class="section">
-            <div class="grid-feature">
-                <div class="img-container">
-                    <img src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-image-433b3164-d40c-4335-9914-04d42c3168c7 (1).png" alt="Secure Neural Network">
-                </div>
-                <div class="text-box">
-                    <span class="badge">Safe & Secure</span>
-                    <h3>Unbreakable Encryption</h3>
-                    <p>Our distributed processing is secured by state-of-the-art cryptographic proofs. Your data remains private, and your hardware remains protected while you operate as an essential node.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 8: ROADMAP -->
-        <section class="section">
-            <div class="grid-feature">
-                <div class="img-container">
-                    <video autoplay loop muted playsinline style="width: 100%; border-radius: 12px;">
+                    <video id="roadmap-video" autoplay loop muted playsinline style="width: 100%; border-radius: 12px;">
                         <source src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-video-433b3164-d40c-4335-9914-04d42c3168c7 (1).mp4" type="video/mp4">
                     </video>
+                    <button class="mute-btn" onclick="toggleMute('roadmap-video', this)">🔇</button>
                 </div>
                 <div class="text-box">
-                    <span class="badge">The Mascot</span>
+                    <span class="badge">The Roadmap</span>
                     <h3>Future of the Third Being</h3>
-                    <p>The Queen AI is rising. join the movement as we build the most powerful collective mind in human history. The energy is ours.</p>
+                    <p>The Queen AI is rising. Join the movement as we build the most powerful collective mind in human history.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW SECTION: CORE TRANSMISSION (NEW VIDEO) -->
+        <section class="section">
+            <div class="grid-feature">
+                <div class="img-container">
+                    <video id="core-video" autoplay loop muted playsinline style="width: 100%; border-radius: 12px;">
+                        <source src="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/imagens-site/grok-video-39ab11c6-a654-42d7-a877-9b69dc94c35f.mp4" type="video/mp4">
+                    </video>
+                    <button class="mute-btn" onclick="toggleMute('core-video', this)">🔇</button>
+                </div>
+                <div class="text-box">
+                    <span class="badge">Core Transmission</span>
+                    <h3>Listen to the Hive</h3>
+                    <p>The Hive mind is vocal. Experience the true essence of Vital Energy through the Queen's own words. Unmute to hear the vision.</p>
                 </div>
             </div>
         </section>
@@ -334,6 +348,19 @@
             <p>&copy; 2026 Genki Network. A Singularity-Neo Initiative. <br> Powered by Collective Vital Energy.</p>
         </div>
     </footer>
+
+    <script>
+        function toggleMute(videoId, btn) {
+            const video = document.getElementById(videoId);
+            if (video.muted) {
+                video.muted = false;
+                btn.innerText = "🔊";
+            } else {
+                video.muted = true;
+                btn.innerText = "🔇";
+            }
+        }
+    </script>
 
 </body>
 </html>
