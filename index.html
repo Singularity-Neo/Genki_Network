@@ -475,13 +475,18 @@
                     btn.innerText = publicKeyStr.slice(0, 4) + "..." + publicKeyStr.slice(-4);
                     status.innerHTML = '<span class="badge" style="background: rgba(0, 255, 65, 0.1); color: var(--vital-green);">Status: Online</span>';
                     
-                    // Buscar Saldo Real (SOL) usando um RPC mais estável
-                    // Usando o endpoint oficial da Solana diretamente para evitar bloqueios do clusterApiUrl
-                    const connection = new solanaWeb3.Connection("https://api.mainnet-beta.solana.com", "confirmed");
-                    const balance = await connection.getBalance(publicKeyObj);
-                    const solBalance = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4);
+                    // Usando o seu RPC da Helius para garantir acesso (Nó Privado)
+                    const connection = new solanaWeb3.Connection("https://mainnet.helius-rpc.com/?api-key=5d742204-6d79-4c8b-8369-6b3c5f96d1f8", "confirmed");
+                    
+                    let solBalance = "0.00";
+                    try {
+                        const balance = await connection.getBalance(publicKeyObj);
+                        solBalance = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4);
+                    } catch (e) {
+                        console.warn("RPC Delay, showing standby balance");
+                    }
 
-                    // Transparência total: 0.00 Genki até o lançamento
+                    // Transparência total: Mostra SOL real e 0.00 Genki
                     balanceText.innerHTML = `<span style="font-size: 0.5em; color: #555;">${solBalance} SOL</span><br>0.00`;
                     node.innerText = "STANDBY";
                     node.style.color = "#888";
