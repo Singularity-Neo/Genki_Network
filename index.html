@@ -444,14 +444,15 @@
             const balanceText = document.getElementById('dash-balance');
             const node = document.getElementById('node-status');
 
-            // Detectar Provedor (Phantom, Solflare, etc)
+            // Detectar Provedor de forma robusta (Phantom, Solflare, etc)
             const getProvider = () => {
-                if ('solana' in window) {
-                    const provider = window.solana;
-                    if (provider.isPhantom || provider.isSolflare || true) {
-                        return provider;
-                    }
-                }
+                // Tenta Solflare primeiro (específico)
+                if (window.solflare) return window.solflare;
+                // Tenta Phantom ou Padrão injetado
+                if (window.solana) return window.solana;
+                
+                // Se não achar nada, avisa e manda pro site
+                alert("Nenhuma carteira Solana detectada. Por favor, instale a Solflare ou Phantom.");
                 window.open('https://solflare.com/', '_blank');
                 return null;
             };
@@ -461,27 +462,33 @@
             if (provider) {
                 try {
                     btn.innerText = "Requesting...";
-                    const resp = await provider.connect();
-                    const publicKey = resp.publicKey.toString();
+                    
+                    // Alguns provedores precisam de inicialização
+                    if (!provider.isconnected) {
+                        await provider.connect();
+                    }
+
+                    const publicKeyStr = provider.publicKey.toString();
+                    const publicKeyObj = provider.publicKey;
                     
                     // Sucesso na conexão
-                    btn.innerText = publicKey.slice(0, 4) + "..." + publicKey.slice(-4);
+                    btn.innerText = publicKeyStr.slice(0, 4) + "..." + publicKeyStr.slice(-4);
                     status.innerHTML = '<span class="badge" style="background: rgba(0, 255, 65, 0.1); color: var(--vital-green);">Status: Online</span>';
                     
                     // Buscar Saldo Real (SOL) via RPC público
                     const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
-                    const balance = await connection.getBalance(resp.publicKey);
+                    const balance = await connection.getBalance(publicKeyObj);
                     const solBalance = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(4);
 
-                    // $GENKI ainda não lançado oficialmente -> Mostramos 0.00 (Transparência Total)
+                    // Transparência total: 0.00 Genki até o lançamento
                     balanceText.innerHTML = `<span style="font-size: 0.5em; color: #555;">${solBalance} SOL</span><br>0.00`;
                     node.innerText = "STANDBY";
                     node.style.color = "#888";
 
-                    console.log("Wallet Connected:", publicKey);
                 } catch (err) {
-                    console.error("User rejected connection", err);
-                    btn.innerText = "Connection Failed";
+                    console.error("Connection error:", err);
+                    btn.innerText = "Connect Wallet";
+                    alert("Falha ao conectar: " + (err.message || "Usuário recusou"));
                 }
             }
         }
