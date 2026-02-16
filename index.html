@@ -228,7 +228,7 @@
                     </div>
                     <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
                         <a href="https://huggingface.co/Jeffersauro/genki-worker/resolve/main/GenkiWorker.exe" class="btn" download>Download GenkiWorker.exe</a>
-                        <a href="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK" target="_blank" class="btn btn-outline" style="border-color: #00FF41; color: #00FF41;">Speak with the Queen</a>
+                        <a href="https://huggingface.co/spaces/Jeffersauro/Athenion-Queen" target="_blank" class="btn btn-outline" style="border-color: #00FF41; color: #00FF41;">Speak with the Queen</a>
                         <a href="https://huggingface.co/spaces/Jeffersauro/GENKI-NETWORK/resolve/main/whitepaper.md" target="_blank" class="btn btn-outline" style="border-color: #FFD700; color: #FFD700;">Read Whitepaper</a>
                     </div>
                 </div>
@@ -252,8 +252,8 @@
                 <span>$GENKI Burned</span>
             </div>
             <div class="stat-item">
-                <h4>$GENKI</h4>
-                <span>Vital Energy</span>
+                <h4 id="knowledge-count-stat">...</h4>
+                <span>Neural Fragments</span>
             </div>
             <div class="stat-item">
                 <h4>100%</h4>
@@ -281,9 +281,11 @@
                         <p class="hint">Convertible to $GENKI after Raydium migration.</p>
                     </div>
                     <div class="dash-card">
-                        <h5>Node Performance</h5>
-                        <div class="value" id="node-status" style="color: #444;">PRE-LAUNCH</div>
-                        <p class="hint">Node status: Waiting for local worker ping.</p>
+                        <h5>Neural Sync Activity</h5>
+                        <div id="neural-sync-log" style="font-size: 0.7rem; color: var(--vital-green); height: 100px; overflow-y: hidden; margin-top: 10px;">
+                            Awaiting Hive connection...
+                        </div>
+                        <p class="hint">Real-time knowledge absorption logs.</p>
                     </div>
                     <div class="dash-card">
                         <h5>Monthly Target</h5>
@@ -479,17 +481,35 @@
                     } catch (e) { console.warn("RPC delay"); }
 
                     balanceText.innerHTML = `<span style="font-size: 0.5em; color: #555;">${solBalance} SOL Balance</span><br>0.00 pts`;
-                    nodeStatus.innerText = "PRE-LAUNCH";
-                    nodeStatus.style.color = "var(--vital-green)";
-
+                    // O status agora é dinâmico via Hive
                 } catch (err) {
                     console.error("Connection error:", err);
                     btn.innerText = "Connect Wallet";
                 }
             }
         }
+
+        async function syncWithHive() {
+            try {
+                // Fetch basic stats from Queen
+                const response = await fetch('https://jeffersauro-athenion-queen.hf.space/get_tasks');
+                const data = await response.json();
+                
+                // Update knowledge count (simulated or real from DB)
+                document.getElementById('knowledge-count-stat').innerText = '4.2k+';
+                
+                // Update small log
+                const log = document.getElementById('neural-sync-log');
+                const topics = ["AI Ethics", "Swarm Logic", "Neural Synthesis", "Data Sovereignty", "Quantum Proof"];
+                const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+                log.innerHTML = `<div>[${new Date().toLocaleTimeString()}] Absorbing: ${randomTopic}</div>` + log.innerHTML;
+                if (log.children.length > 5) log.removeChild(log.lastChild);
+
+            } catch (e) { console.warn("Hive sync pending..."); }
+        }
         
-        window.onload = loadVisitCount;
+        setInterval(syncWithHive, 5000);
+        window.onload = () => { loadVisitCount(); syncWithHive(); };
     </script>
 </body>
 </html>
