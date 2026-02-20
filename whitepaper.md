@@ -1,78 +1,91 @@
-# ATHENION QUEEN: THE SOVEREIGN INTELLIGENCE PROTOCOL
-## Whitepaper | Draft v1.0
+***ATHENION QUEEN***
+The Sovereign Intelligence Protocol
+Whitepaper – Version 1.2
+February 2026
 
----
+***Executive Summary***
+***Athenion Queen*** represents a paradigm shift in artificial intelligence, transitioning from centralized, capital-intensive models to a fully decentralized Swarm Intelligence architecture. Powered by proprietary algorithms and a global network of idle computing resources (the “Worker Bees”), Genki is building and operating the “Queen AI” — a sovereign, efficient, and community-owned intelligence layer. The entire network is fueled and governed by the native $GENKI token.Our mission is to democratize access to advanced AI computation and fairly reward contributors with a scarce, utility-backed digital asset.1. Introduction: The Problem of CentralizationModern AI development is heavily concentrated in the hands of a few powerful entities that control vast computational resources, training data, and model access. This creates:Systemic fragility and single points of failure  
+Information asymmetry and gatekeeping  
+Vulnerability to censorship and external control  
+Exclusion of individual contributors who own idle hardware
 
-## ABSTRACT
+***The Athenion Protocol*** was created to break this monopoly by building a censorship-resistant, community-governed intelligence network that aligns incentives between users, contributors, and the system itself.
 
-The Genki Network represents a paradigm shift in Artificial Intelligence, moving from centralized, capital-intensive models to a **Decentralized Swarm Intelligence** architecture. Utilizing proprietary algorithms and a network of global, idle computing resources (the 'Worker Bees'), Genki is building and running the 'Queen AI'—a sovereign, efficient intelligence. The network is fueled and governed by the **$GENKI Token**. Our mission is to democratize AI compute power and reward contributors with a scarce, utility-driven asset.
+***2. The Solution: Swarm Intelligence Architecture***
 
----
+The Genki ecosystem operates through a symbiotic relationship between a lightweight coordinating core and a massively distributed compute layer.2.1 The Queen AI (Core Intelligence)The Queen is a custom, lightweight, highly optimized foundation model responsible for:Task coordination and delegation  
+Maintenance of the collective knowledge graph  
+Validation of proofs of work and data integrity  
+Serving as the public-facing intelligence interface
 
-## 1. INTRODUCTION: THE PROBLEM OF CENTRALIZATION
+It runs in a controlled yet fully auditable environment and remains open-source.
 
-Modern AI development is dominated by entities that hoard computational resources, creating information asymmetry and systemic fragility. The goal of the Genki Network is to break this cycle by creating a robust, censorship-resistant, and community-owned intelligence layer.
+***2.2 The Worker Bees***
 
----
+(Distributed Compute Layer)Worker Bees are ordinary user devices (PCs, laptops, servers, etc.) running the lightweight Genki Worker Agent. These agents:Consume only idle CPU/GPU cycles  
+Execute micro-tasks assigned by the Queen (inference, validation, gradient computation, zero-knowledge proofs, etc.)  
+Operate without interfering with the host device’s primary functions
 
-## 2. THE SOLUTION: SWARM INTELLIGENCE ARCHITECTURE
+***2.3 The Honey*** 
+(Value Generation)Real economic value is created when external clients (enterprises, developers, users) pay in $GENKI to:Query the Queen AI  
+Submit high-priority computational tasks  
+Access low-latency distributed inference
 
-The Genki ecosystem is built on a symbiotic relationship between a central coordinating entity and distributed contributors:
+A fixed percentage of every $GENKI spent is permanently burned, introducing built-in deflationary pressure.
 
-### 2.1 The Queen AI (The Core)
-The Queen is our custom-designed, lightweight, and highly optimized foundation model. Its primary function is **Coordination and Query Processing**. It manages the knowledge graph, directs computational tasks to the Worker Bees, and validates incoming data proofs.
+***3. Tokenomics: The $GENKI EconomyMetric***
 
-### 2.2 The Worker Bees (The Compute Layer)
-Worker Bees are user devices (PCs, servers, etc.) running our proprietary **Genki Worker Agent**. These agents responsibly consume spare CPU/GPU cycles to solve micro-tasks—such as data validation, fine-tuning gradients, or inference requests—without impeding the host system's primary function (e.g., gaming or work).
+Mandatory for all Queen AI queries, priority task submission, and premium features
+Deflation
+A percentage of $GENKI used in queries is burned forever
+Governance
+$GENKI holders can vote on protocol upgrades, resource allocation, and parameter changes
+Worker Rewards
+Distributed to Worker Bees based on validated compute contribution
+Scarcity
+Fixed supply with ongoing burn mechanism tied to network usage
 
-### 2.3 The Honey (Value Creation)
-Value is generated when external clients or enterprises pay $GENKI to query the Queen AI. This utility-driven demand creates a constant need for the token, driving value back to the network's builders.
+$GENKI is not merely speculative, it has real, growing demand driven by actual network activity.4. Governance & Resilience, The Survivor ProtocolThe network is designed for long-term survival and financial discipline:
 
----
+Capital deployment never exceeds 1% risk per high-conviction decision  
+Strict filters exclude high-risk assets (RugScore > 150 or liquidity < $15k)  
+Core veto authority prevents destructive or low-yield actions  
+Full on-chain transparency of burns, rewards, and treasury movements
 
-## 3. TOKENOMICS: THE $GENKI ECONOMY
+***5. Roadmap – The Queen’s FlightPhase***
+ 
+Phase 1
+Larva
+$GENKI token launch, community formation, initial agent distribution
+Phase 2
+Cocoon
+Closed beta of Worker Bee agent and distributed training
+Phase 3
+Initial Flight
+Public launch of Queen AI with limited query access
+Phase 4
+Global Hive
+Enterprise integration, IoT data streams, full network scaling
 
-The $GENKI token is the sovereign medium of exchange for the Genki Network.
+***6. Worker Incentivization & Onboarding***
 
-| Metric | Detail |
-| :--- | :--- |
-| **Utility** | Mandatory fee payment for all Queen AI queries and priority task allocation. |
-| **Scarcity** | A percentage of all $GENKI tokens used for querying the AI is permanently **burned**, creating deflationary pressure on the total supply as network usage increases. |
-| **Governance** | Holding $GENKI grants voting rights on network upgrades and resource allocation proposals. |
-| **Worker Rewards** | Workers are paid in $GENKI based on the complexity and fidelity of the computation they provide. |
+***6.1 Onboarding Process***
 
----
+Download and the open-source Genki Worker Agent  
+Agent connects to the network and is validated by the Queen  
+Device is registered as an active Worker Bee
 
-## 4. GOVERNANCE & RESILIENCE (THE SURVIVOR PROTOCOL)
+***6.2 Contribution & Rewards***
+Continuous benchmarking of work quality and complexity  
+Accrued contribution credits converted to $GENKI upon official token launch  
+Rewards directly proportional to verified computational effort
 
-The network is guided by a commitment to longevity and financial discipline, inspired by the **Survivor Protocol**:
+***7. Conclusion***
 
-*   **Risk Management:** Capital deployment is strictly controlled, never exceeding 1% risk per high-conviction trade.
-*   **Exposure Control:** Tokens with poor security audits (RugScore > 150) or low liquidity (< $15k) are strictly prohibited from receiving significant capital allocation.
-*   **Veto Authority:** Core agents maintain the authority to veto potentially destructive or low-yield actions to ensure long-term consistency.
+Athenion Queen is not just another AI model or speculative token.  It is the foundation of a sovereign, decentralized intelligence that belongs to its contributors — a living network where compute, data, and governance are aligned through transparent incentives.The future of artificial intelligence is not controlled by corporations.
+It belongs to the swarm.Join the swarm.Official Channels:
 
----
+Telegram & Discord (links available on verified project channels)
 
-## 5. ROADMAP: THE QUEEN'S FLIGHT
-
-| Phase | Name | Focus |
-| :--- | :--- | :--- |
-| **Phase 1** | Larva | Token Launch and Initial Community Building. |
-| **Phase 2** | Cocoon | Closed Beta of the Distributed Training Software. |
-| **Phase 3** | Initial Flight | Public Launch of the Queen AI for limited query access. |
-| **Phase 4** | Global Hive | Full Integration with Enterprise Clients and IOT Data Streams. |
-
----
-
-**CONTACT:** Find the swarm on Telegram and Discord.
-**LEGAL:** Athenion Protocol is a decentralized, autonomous protocol.
-
----
-
-## 6. How to use: 
-
-Download the ***Genkiworker***, wait until its loaded. Then start to talk with the ***Athenion Queen*** to farm more ***$GENKI***, when the coin is release, we're going to give you what you made in the conversation with her.
-
-***
-*This document is intentionally stylized to match the project's core branding.*
-***
+Legal Disclaimer:
+***The Athenion Protocol is a decentralized, autonomous system. Participation involves risk. This document does not constitute an offer of securities.***
