@@ -65,7 +65,13 @@ The network is guided by a commitment to longevity and financial discipline, ins
 ---
 
 **CONTACT:** Find the swarm on Telegram and Discord.
-**LEGAL:** Genki Network is a decentralized, autonomous protocol.
+**LEGAL:** Athenion Protocol is a decentralized, autonomous protocol.
+
+---
+
+## 6. How to use: 
+
+Download the ***Genkiworker***, wait until its loaded. Then start to talk with the ***Athenion Queen*** to farm more ***$GENKI***, when the coin is release, we're going to give you what you made in the conversation with her.
 
 ***
 *This document is intentionally stylized to match the project's core branding.*
